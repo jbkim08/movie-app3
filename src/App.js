@@ -51,7 +51,11 @@ function App() {
       </div>
 
       <ScrollContainer className="row scroll-container">
-        <MovieList movies={movies} handleClick={addFavouriteMovie} />
+        <MovieList
+          addMovie={true}
+          movies={movies}
+          handleClick={addFavouriteMovie}
+        />
       </ScrollContainer>
 
       <div className="row align-items-center my-4">
@@ -59,7 +63,7 @@ function App() {
       </div>
 
       <ScrollContainer className="row scroll-container">
-        <MovieList movies={favourites} />
+        <MovieList addMovie={false} movies={favourites} />
       </ScrollContainer>
     </div>
   );
