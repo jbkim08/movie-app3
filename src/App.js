@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MovieList from "./components/MovieList";
 //css
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -32,6 +32,14 @@ function App() {
         "https://m.media-amazon.com/images/M/MV5BYWU1YTA4OGUtNjcxMC00ZTllLTgxYWUtY2U5NmViZTU0MmNjXkEyXkFqcGdeQXVyMTM0NTUzNDIy._V1_SX300.jpg",
     },
   ]);
+  //검색어로 영화데이터 요청
+  const getMovieRequest = async (searchValue) => {
+    const url = `http://www.omdbapi.com/?apikey=6bfc4a64&s=${searchValue}`;
+    const response = await fetch(url); //영화서버에서 제이슨데이터를 받음
+    const responseJson = await response.json();
+    console.log(responseJson);
+  };
+  getMovieRequest("amazing");
 
   return (
     <div className="container-fluid movie-app">
