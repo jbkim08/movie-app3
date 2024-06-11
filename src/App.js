@@ -1,6 +1,8 @@
 import { useState } from "react";
-import "./App.css";
 import MovieList from "./components/MovieList";
+//css
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 function App() {
   //영화 데이터 가져오기
@@ -32,8 +34,10 @@ function App() {
   ]);
 
   return (
-    <div>
-      <MovieList movies={movies} />
+    <div className="container-fluid movie-app">
+      <div className="row">
+        <MovieList movies={movies} />
+      </div>
     </div>
   );
 }
