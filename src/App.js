@@ -3,6 +3,8 @@ import MovieList from "./components/MovieList";
 //css
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import MovieListHeading from "./components/MovieListHeading";
+import SearchBox from "./components/SearchBox";
 
 function App() {
   //영화 데이터 가져오기
@@ -21,6 +23,11 @@ function App() {
 
   return (
     <div className="container-fluid movie-app">
+      <div className="row align-items-center my-4">
+        <MovieListHeading heading="제목" />
+        <SearchBox />
+      </div>
+
       <div className="row">
         <MovieList movies={movies} />
       </div>
