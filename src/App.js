@@ -10,6 +10,7 @@ import ScrollContainer from "react-indiana-drag-scroll";
 function App() {
   //영화 데이터 가져오기
   const [movies, setMovies] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   //검색어로 영화데이터 요청
   const getMovieRequest = async (searchValue) => {
@@ -28,6 +29,19 @@ function App() {
       getMovieRequest(searchValue);
     }
   }, [searchValue]);
+  //시작시 선호작을 저장소에서 가져옴
+  useEffect(() => {
+    const movieFavourites = JSON.parse(localStorage.getItem("favourites"));
+    if (movieFavourites) {
+      setFavourites(movieFavourites);
+    }
+  }, []);
+  //선호작을 추가하기 함수
+  const addFavouriteMovie = (movie) => {
+    const newList = [...favourites, movie]; //선호작에 새 영화 추가
+    setFavourites(newList); //추가된 리스트 새로 저장
+    localStorage.setItem("favourites", JSON.stringify(newList)); //저장소 저장
+  };
 
   return (
     <div className="container-fluid movie-app">
@@ -37,12 +51,16 @@ function App() {
       </div>
 
       <ScrollContainer className="row scroll-container">
-        <MovieList movies={movies} />
+        <MovieList movies={movies} handleClick={addFavouriteMovie} />
       </ScrollContainer>
 
       <div className="row align-items-center my-4">
         <MovieListHeading heading="내 선호작" />
       </div>
+
+      <ScrollContainer className="row scroll-container">
+        <MovieList movies={favourites} />
+      </ScrollContainer>
     </div>
   );
 }
