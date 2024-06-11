@@ -42,6 +42,12 @@ function App() {
     setFavourites(newList); //추가된 리스트 새로 저장
     localStorage.setItem("favourites", JSON.stringify(newList)); //저장소 저장
   };
+  //선호작을 제거하기 함수
+  const removeMovie = (movie) => {
+    const newList = favourites.filter((m) => m.imdbID !== movie.imdbID);
+    setFavourites(newList); //추가된 리스트 새로 저장
+    localStorage.setItem("favourites", JSON.stringify(newList)); //저장소 저장
+  };
 
   return (
     <div className="container-fluid movie-app">
@@ -63,7 +69,11 @@ function App() {
       </div>
 
       <ScrollContainer className="row scroll-container">
-        <MovieList addMovie={false} movies={favourites} />
+        <MovieList
+          addMovie={false}
+          movies={favourites}
+          handleClick={removeMovie}
+        />
       </ScrollContainer>
     </div>
   );
