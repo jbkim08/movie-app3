@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import MovieListHeading from "./components/MovieListHeading";
 import SearchBox from "./components/SearchBox";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 function App() {
   //영화 데이터 가져오기
@@ -35,9 +36,9 @@ function App() {
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
 
-      <div className="row">
+      <ScrollContainer className="row scroll-container">
         <MovieList movies={movies} />
-      </div>
+      </ScrollContainer>
     </div>
   );
 }
