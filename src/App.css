@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Single+Day&display=swap");
+
 body {
+  font-family: "Single Day", cursive;
   background: #141414;
   color: white;
 }

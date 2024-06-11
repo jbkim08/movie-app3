@@ -32,13 +32,17 @@ function App() {
   return (
     <div className="container-fluid movie-app">
       <div className="row align-items-center my-4">
-        <MovieListHeading heading="제목" />
+        <MovieListHeading heading="영화 검색과 선호작 등록" />
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
 
       <ScrollContainer className="row scroll-container">
         <MovieList movies={movies} />
       </ScrollContainer>
+
+      <div className="row align-items-center my-4">
+        <MovieListHeading heading="내 선호작" />
+      </div>
     </div>
   );
 }
